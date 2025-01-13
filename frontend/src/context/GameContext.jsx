@@ -1,0 +1,1 @@
+// Global state for the game

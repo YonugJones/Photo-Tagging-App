@@ -1,0 +1,1 @@
+// Marker component for correct guesses

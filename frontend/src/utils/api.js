@@ -1,0 +1,1 @@
+// Functions for API calls (validate user guess and fetch high scores)

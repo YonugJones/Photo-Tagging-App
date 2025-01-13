@@ -1,0 +1,1 @@
+// Targeting box component for user clicks
