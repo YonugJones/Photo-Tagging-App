@@ -1,8 +1,12 @@
 // Targeting box component for user clicks
+import DropDownMenu from "./DropDownMenu";
+import '../styles/targetingBox.css';
 
-const TargetingBox = () => {
+const TargetingBox = ({ x, y, onCharacterSelect }) => {
   return (
-    <h1>Targeting Box</h1>
+    <div className="targeting-box" style={{ left: x, top: y }}>
+      <DropDownMenu onSelect={onCharacterSelect} />
+    </div>
   )
 }
 

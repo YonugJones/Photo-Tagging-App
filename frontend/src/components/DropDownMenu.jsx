@@ -1,4 +1,5 @@
 // Dropdown menu for selecting characters (waldo, wanda, wizard)
+import '../styles/dropDownMenu.css';
 
 const DropDownMenu = ({ onSelect }) => {
   const characters = ['waldo', 'wanda', 'wizard'];

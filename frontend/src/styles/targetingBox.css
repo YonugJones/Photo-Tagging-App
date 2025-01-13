@@ -1,1 +1,13 @@
 /* Styles for the targeting box */
+
+.targeting-box {
+  position: absolute;
+  border: 2px solid red;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+}
