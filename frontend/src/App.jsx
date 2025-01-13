@@ -1,6 +1,11 @@
-function App() {
+import GamePage from "./pages/GamePage"
+
+const App = () => {
   return (
-    <h1>APP</h1>
+    <>
+      <h1>Where&apos;s Waldo?</h1>
+      <GamePage />
+    </>
   )
 }
 
