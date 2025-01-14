@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const errorHandler = require('./middleware/errorHandler');
+const validateRouter = require('./routes/validate');
+
 const app = express();
 
 // Application level middleware
@@ -10,9 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Routes
-app.use('/', (req, res) => {
-  res.json({ message: 'Index' })
-})
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the backend API' })
+});
+
+app.use('/validate', validateRouter);
 
 // Global error handler
 app.use(errorHandler);
