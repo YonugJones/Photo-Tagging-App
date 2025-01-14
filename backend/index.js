@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const errorHandler = require('./middleware/errorHandler');
 const validateRouter = require('./routes/validate');
+const scoresRouter = require('./routes/scores');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/validate', validateRouter);
+app.use('/scores', scoresRouter);
 
 // Global error handler
 app.use(errorHandler);
