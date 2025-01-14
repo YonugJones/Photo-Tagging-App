@@ -11,6 +11,7 @@ export const TimerProvider = ({ children }) => {
   useEffect(() => {
     let timerId;
     if (isRunning) {
+      console.log('Timer started');
       timerId = setInterval(() => {
         setElapsedTime((prevTime) => prevTime + 1);
       }, 1000);
@@ -18,9 +19,16 @@ export const TimerProvider = ({ children }) => {
     return () => clearInterval(timerId);
   }, [isRunning])
 
-  const startTimer = () => setIsRunning(true);
-  const stopTimer = () => setIsRunning(false);
+  const startTimer = () => {
+    console.log('Starting timer...');
+    setIsRunning(true)
+  };
+  const stopTimer = () => {
+    setIsRunning(false)
+    console.log('Stopping timer...')
+  };
   const resetTimer = () => {
+    console.log('Resetting timer...')
     setIsRunning(false);
     setElapsedTime(0);
   }
@@ -34,4 +42,5 @@ export const TimerProvider = ({ children }) => {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTimer = () => useContext(TimerContext);

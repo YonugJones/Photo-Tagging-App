@@ -1,4 +1,28 @@
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper {
+  position: relative; 
+  display: inline-block;
+}
+
 .game-image {
+  display: block;
   width: 950px;
-  height: auto;
+  height: auto; 
+}
+
+.timer {
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white; 
+  padding: 5px 10px; 
+  border-radius: 5px;
+  font-size: 16px; 
+  z-index: 1; 
 }
