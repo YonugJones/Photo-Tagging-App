@@ -21,8 +21,8 @@ model Character {
 }
 
 model Score {
-  id Int @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   playerName String
-  time Int
-  createdAt DateTime @default(now())
+  time       Int
+  createdAt  DateTime @default(now())
 }
