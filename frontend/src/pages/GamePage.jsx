@@ -3,6 +3,7 @@
 import { validateClick } from '../utils/api';
 import { useState } from 'react';
 import TargetingBox from '../components/TargetingBox';
+import Marker from '../components/Marker';
 import illustration from '../assets/waldo-illustration.jpeg';
 import '../styles/gamePage.css';
 
