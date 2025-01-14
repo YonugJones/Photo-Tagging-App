@@ -1,5 +1,6 @@
 // Game screen with image background
 
+import { validateClick } from '../utils/api';
 import { useState } from 'react';
 import TargetingBox from '../components/TargetingBox';
 import illustration from '../assets/waldo-illustration.jpeg';
@@ -7,6 +8,7 @@ import '../styles/gamePage.css';
 
 const GamePage = () => {
   const [clickPosition, setClickPosition] = useState(null);
+  const [correctGuesses, setCorrectGuesses] = useState([])
 
   const handleImageClick = (e) => {
     const rect = e.target.getBoundingClientRect();
@@ -16,10 +18,18 @@ const GamePage = () => {
     })
   }
 
-  const handleCharacterSelect = (character) => {
+  const handleCharacterSelect = async (character) => {
     console.log('Selected character:', character);
     console.log('Coordinate:', clickPosition);
-    // TODO validate user click with character position in DB
+
+    const response = await validateClick(clickPosition.x, clickPosition.y, character);
+
+    if (response.success) {
+      setCorrectGuesses((prev) => [...prev, { name: character, ...clickPosition }]);
+    } else {
+      alert(response.message);
+    }
+
     setClickPosition(null);
   }
 
@@ -29,6 +39,10 @@ const GamePage = () => {
       {clickPosition && (
         <TargetingBox x={clickPosition.x} y={clickPosition.y} onCharacterSelect={handleCharacterSelect} />
       )}
+      {correctGuesses.map((guess, index) => (
+        // TO DO: create Marker component
+        <Marker key={index} x={guess.x} y={guess.y} name={guess.name} />
+      ))}
     </div>
   )
 }
