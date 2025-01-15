@@ -1,12 +1,12 @@
 // High score leaderboard screen
-import { useState, useEffect } from 'react';
-import { getScores, postScores } from '../utils/api';
-import HighScoreForm from '../components/HighScoreForm';
 
+import { useState, useEffect } from 'react';
+import { getScores } from '../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 export const HighScorePage = () => {
   const [scores, setScores] = useState([]);
-  const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchScores = async () => {
@@ -18,18 +18,12 @@ export const HighScorePage = () => {
     fetchScores();
   }, []);
 
-  const handleSubmitScore = async (playerName, time) => {
-    const response = await postScores(playerName, time);
-    if (response.sucess) {
-      setScores((prev) => [...prev, response.data]);
-      setShowForm(false)
-    } else {
-      alert(response.message);
-    }
-  }
+  const handlePlayAgain = () => {
+    navigate('/');
+  };
 
   return (
-    <div className='high-score-page'>
+    <div>
       <h1>High Scores</h1>
       <ul>
         {scores.map((score, index) => (
@@ -38,12 +32,9 @@ export const HighScorePage = () => {
           </li>
         ))}
       </ul>
-      {showForm ? (
-        // ToDO: create high score form
-        <HighScoreForm onSubmit={handleSubmitScore} />
-      ) : (
-        <butto onClick={() => setShowForm(true)}>Add Your Score</button>
-      )}
+      <button onClick={handlePlayAgain}>Play Again</button>
     </div>
-  )
-}
+  );
+};
+
+export default HighScorePage;
